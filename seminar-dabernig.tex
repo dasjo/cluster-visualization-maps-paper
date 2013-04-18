@@ -1,0 +1,109 @@
+% $Id: INF_Diplomarbeit.tex 1660 2010-02-25 13:57:42Z tkren $
+%
+% TU Wien - Faculty of Informatics
+% thesis template
+%
+% This template is using the memoir document class, see
+% <http://www.ctan.org/tex-archive/macros/latex/contrib/memoir/memman.pdf>
+% <http://www.ctan.org/info/latex-samples/MemoirChapStyles/MemoirChapStyles.pdf>
+%
+% For questions and comments send an email to
+% Thomas Krennwallner <tkren@kr.tuwien.ac.at>
+%
+
+								
+\documentclass[a4paper,12pt, oneside]{memoir}
+%\chapterstyle{veelo}
+\usepackage{graphicx} 
+\usepackage{placeins}
+\chapterstyle{madsen}
+\setlength{\parskip}{6pt plus 1pt minus 1pt}
+\setlength{\parindent}{0pt}
+
+\usepackage{TUINFDA}
+
+\thesistitle{Cluster visualization for interactive maps}
+\thesisdate{\the\day.\the\month.\the\year}
+
+\thesisdegree{Diplom-Ingenieur}
+\thesiscurriculum{Software Engineering and Internet Computing}
+\thesisverfassung{Verfasser}
+\thesisauthor{Josef Dabernig}
+\thesismatrikelno{0927232}
+% \thesisauthoraddress{} % your address
+
+\thesisbetreuung{Betreuer}
+\thesisbetreins{Prof.~Dr.~A Min Tjoa}
+\thesisbetrzwei{Univ.-Ass.~Dr. Amin Anjomshoaa}
+
+\newcommand{\EnableCustomThesisLayout}{
+\setheaderspaces{*}{1.5cm}{*}
+}
+
+\usepackage{multirow}
+\usepackage{rotating}
+
+\begin{document}
+
+
+% the front matter                                                 
+\frontmatter
+
+\include{chapters/titlepage}
+
+\EnableCustomThesisLayout
+% \include{chapters/eid}
+
+\input{chapters/abstract}
+\newpage
+
+\setcounter{tocdepth}{3}
+\tableofcontents
+\newpage
+
+%TODO enable
+%\listoffigures
+\newpage
+
+%\listoftables
+\newpage
+
+%
+% start of the thesis
+%
+\mainmatter
+\setcounter{secnumdepth}{3}
+
+\input{chapters/01_introduction}
+\input{chapters/02_foundations}
+\input{chapters/03_state}
+\input{chapters/04_further_aspects}
+\input{chapters/05_conclusions}
+
+\newpage
+
+ \appendix
+% \input{chapters/appendix-acronyms}
+ \chapter{Index}
+\listoffigures
+\listoftables
+% \lstlistoflistings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PUT APPENDIX, BIBLIOGRAPHY, ... HERE %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{alpha}
+%\bibliographystyle{alpha}
+\bibliography{bib/references}
+
+\end{document}
+
+%%% Local Variables:
+%%% TeX-PDF-mode: t
+%%% TeX-debug-bad-boxes: t
+%%% TeX-master: t
+%%% TeX-parse-self: t
+%%% TeX-auto-save: t
+%%% reftex-plug-into-AUCTeX: t
+%%% End:

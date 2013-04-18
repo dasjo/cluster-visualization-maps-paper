@@ -1,0 +1,255 @@
+% $Id: TUINFDA.sty 1752 2010-03-20 11:07:02Z tkren $
+%
+% TU Wien - Faculty of Informatics
+% settings for TUINF thesis
+%
+% For questions and comments send an email to
+% Thomas Krennwallner <tkren@kr.tuwien.ac.at>
+%
+\ProvidesPackage{TUINFDA}[2010/03/20 v1.1 TU INF DA style file]
+\typeout{2010/03/20 v1.1 TU INF DA style file}
+
+%
+% Type 1 Fonts für bessere darstellung in PDF verwenden.
+%
+%\usepackage{tufonts}            % Load TU-Schriften for titlepage
+\usepackage{mathptmx}           % Times + passende Mathefonts
+%\usepackage[scaled=.92]{helvet} % skalierte Helvetica als \sfdefault
+%\usepackage{courier}            % Courier als \ttdefault
+%\usepackage{utopia}
+\usepackage{palatino}           % Palatino, Helevetica, Courier
+
+% %
+% % Spezielle Schrift verwenden.
+% %
+\renewcommand{\encodingdefault}{T1}
+\renewcommand{\familydefault}{\rmdefault}
+
+% load english and ngerman
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman,english]{babel}
+
+% search for graphics in ./figures
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+
+% TikZ ist kein Zeichenprogramm
+\usepackage{tikz}
+
+% we need a recent geometry for \newgeometry
+\usepackage{geometry}[2010/02/15]
+
+\usepackage{url}
+
+\usepackage[lined,linesnumbered,algochapter]{algorithm2e} % Algorithm-Environment
+
+\usepackage{amsmath}
+\newcommand{\BigO}[1]{\ensuremath{\operatorname{O}\bigl(#1\bigr)}}
+
+
+% Paket für die Indexerstellung.
+\usepackage{makeidx}
+
+% Times-like fonts in support of mathematics.
+\usepackage[varg]{txfonts}
+
+% Paket zum Erweitern der Tabelleneigenschaften
+\usepackage{array}
+
+% Für Acronyme
+\usepackage{acronym}
+
+% Package für Farben im PDF
+\usepackage{color}
+
+% Paket für Links innerhalb des PDF Dokuments
+\definecolor{LinkColor}{rgb}{0,0,0.5}
+
+% create new titlepage pagestyle for memoir
+\makepagestyle{tuinftitlepage}
+\makeheadposition{tuinftitlepage}{center}{center}{center}{center}
+
+\newlength{\tuinf@headwidth}
+\setlength{\tuinf@headwidth}{18.2cm}
+\newlength{\tuinf@footwidth}
+\setlength{\tuinf@footwidth}{16cm}
+%the next 2 lines only work with recent versions of memoir
+%\makerunningwidth{tuinftitlepage}[\tuinf@footwidth]{\tuinf@headwidth}
+%\makefootrule{tuinftitlepage}{\tuinf@footwidth}{0.5pt}{1mm}
+
+\makerunningwidth{tuinftitlepage}{\tuinf@headwidth}
+
+% font sizes for the titlepage
+\newcommand{\thesistitlefontHUGE}{\fontsize{30}{34}\selectfont}
+\newcommand{\thesistitlefontLARGE}{\fontsize{17}{22}\selectfont}
+\newcommand{\thesistitlefontLarge}{\fontsize{14}{18}\selectfont}
+\newcommand{\thesistitlefontlarge}{\fontsize{12}{14.5}\selectfont}
+\newcommand{\thesistitlefontnormalsize}{\fontsize{11}{13.6}\selectfont}
+
+% a squared bullet
+\def\tuinf@squarebullet{\raisebox{0.4ex}{\thesistitlefontLarge $\centerdot$}}
+
+\def\tuinf@titlingfoot{%
+  \centering%
+  \rule{\tuinf@footwidth}{0.5pt}
+
+  \begin{minipage}[t][1cm][t]{\tuinf@footwidth}%
+    \sffamily%
+    \centering%
+    \thesistitlefontnormalsize%
+    %
+    Technische Universit\"{a}t Wien
+
+    A-1040 Wien \tuinf@squarebullet{} Karlsplatz 13 \tuinf@squarebullet{}
+    Tel. +43-1-58801-0 \tuinf@squarebullet{} www.tuwien.ac.at%
+  \end{minipage}%
+}
+\def\tuinf@titlinghead{%
+  \centering%
+  \begin{minipage}[t]{\tuinf@headwidth}%
+    \centering%
+    \tikz{%
+      \node at (0,0) {\includegraphics[width=17.9cm]{dokumentenkopf__klein}};
+      \node at (5.5,-0.7) {\includegraphics[scale=1]{INF_Logo_typo_grau}};
+    }%
+  \end{minipage}%
+}
+\newlength{\tuinf@baselineskip}
+\newlength{\tuinf@parindent}
+\makeevenhead{tuinftitlepage}{}{%
+  \setlength{\tuinf@baselineskip}{\baselineskip}%
+  \setlength{\baselineskip}{13.6pt}%
+  \setlength{\tuinf@parindent}{\parindent}%
+  \setlength{\parindent}{17pt}%
+  \tuinf@titlinghead%
+  \setlength{\baselineskip}{\tuinf@baselineskip}%
+  \setlength{\parindent}{\tuinf@parindent}%
+}{}
+\makeoddhead{tuinftitlepage}{}{%
+  \setlength{\tuinf@baselineskip}{\baselineskip}%
+  \setlength{\baselineskip}{13.6pt}%
+  \setlength{\tuinf@parindent}{\parindent}%
+  \setlength{\parindent}{17pt}%
+  \tuinf@titlinghead%
+  \setlength{\baselineskip}{\tuinf@baselineskip}%
+  \setlength{\parindent}{\tuinf@parindent}%
+}{}
+\makeevenfoot{tuinftitlepage}{}{%
+  \setlength{\tuinf@baselineskip}{\baselineskip}%
+  \setlength{\baselineskip}{13.6pt}%
+  \setlength{\tuinf@parindent}{\parindent}%
+  \setlength{\parindent}{17pt}%
+  \tuinf@titlingfoot%
+  \setlength{\baselineskip}{\tuinf@baselineskip}%
+  \setlength{\parindent}{\tuinf@parindent}%
+}{}
+\makeoddfoot{tuinftitlepage}{}{%
+  \setlength{\tuinf@baselineskip}{\baselineskip}%
+  \setlength{\baselineskip}{13.6pt}%
+  \setlength{\tuinf@parindent}{\parindent}%
+  \setlength{\parindent}{17pt}%
+  \tuinf@titlingfoot%
+  \setlength{\baselineskip}{\tuinf@baselineskip}%
+  \setlength{\parindent}{\tuinf@parindent}%
+}{}
+
+% TUINF defaults
+\gdef\tuinfthesistitle{Web Service Composition in Drupal}
+\gdef\tuinfthesisdate{\the\day.\the\month.\the\year}
+\gdef\tuinfthesistype{Seminar in Software Engineering}
+\gdef\tuinfthesisdegree{Diplom-Ingenieur/in}
+\gdef\tuinfthesiscurriculum{Software Engineering and Internet Computing}
+\gdef\tuinfthesisverfassung{Verfasser/in}
+\gdef\tuinfthesisauthor{Klaus Purer}
+\gdef\tuinfthesismatrikelno{0426223}
+\gdef\tuinfthesisbetreuung{Betreuer/in}
+\gdef\tuinfthesisbetreins{Prof.~Dr.~A Min Tjoa}
+\gdef\tuinfthesisbetrzwei{Univ.-Ass.~Dr. Amin Anjomshoaa}
+
+
+\newcommand{\thesistitle}[1]{\xdef\tuinfthesistitle{#1}}
+\newcommand{\thesisdate}[1]{\xdef\tuinfthesisdate{#1}}
+
+\newcommand{\thesistype}[1]{\xdef\tuinfthesistype{#1}}
+\newcommand{\thesisdegree}[1]{\xdef\tuinfthesisdegree{#1}}
+\newcommand{\thesiscurriculum}[1]{\xdef\tuinfthesiscurriculum{#1}}
+\newcommand{\thesisverfassung}[1]{\xdef\tuinfthesisverfassung{#1}}
+\newcommand{\thesisauthor}[1]{\xdef\tuinfthesisauthor{#1}}
+\newcommand{\thesismatrikelno}[1]{\xdef\tuinfthesismatrikelno{#1}}
+
+\newcommand{\thesisbetreuung}[1]{\xdef\tuinfthesisbetreuung{#1}}
+\newcommand{\thesisbetreins}[1]{\xdef\tuinfthesisbetreins{#1}}
+\newcommand{\thesisbetrzwei}[1]{\xdef\tuinfthesisbetrzwei{#1}}
+
+\usepackage[
+pdfauthor={\tuinfthesisauthor},
+bookmarks=true, % PDF bookmarks allowed. NB! The level depth of bookmarks is the same as in the TOC.
+unicode=true, % PDF bookmarks in Unicode.
+bookmarksnumbered=true, % Section numbers in PDF bookmarks.
+bookmarksopenlevel=1, % The open level in PDF bookmarks.
+hyperindex=true, % Hyperlinked index.
+plainpages=false, % Name arabic and roman page numbers differently.
+colorlinks=true, % Links are marked as coloured text, not coloured box.
+linkcolor=linkc, % The colour for in-document links (e.g. in the table of contents).
+citecolor = citec, % The colour for bibliographic citations.
+urlcolor=urlc, % The colour for hyperlinks to the Net.
+pdfpagelayout=OneColumn % Continuous page scrolling.
+]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=LinkColor,
+  citecolor=LinkColor,
+  filecolor=LinkColor,
+  menucolor=LinkColor,
+  urlcolor=LinkColor,
+  pdftitle=\tuinfthesistitle
+}
+
+%
+% Paket um Listings sauber zu formatieren.
+%
+\usepackage[savemem]{listings}
+\lstloadlanguages{PHP}
+
+%
+% ---------------------------------------------------------------------------
+% Listing Definitionen für PHP Code
+%
+\definecolor{phpdoc}      {rgb} {1.0, 0.5, 0.0}
+\definecolor{phpcodetags} {rgb} {1.0, 0.0, 0.0}
+\definecolor{phpkeyword}  {rgb} {0.0, 0.5, 0.0}
+\definecolor{phpcomment}  {rgb} {0.0, 0.5, 0.0}
+\definecolor{phpstring}   {rgb} {0.5, 0.0, 0.0}
+\definecolor{phpidentifier}{rgb} {0.0, 0.0, 0.5}
+\lstset{
+   language           = PHP,
+   extendedchars      = true,
+   basicstyle         = \ttfamily\fontsize{11}{12}\selectfont,
+   backgroundcolor    = \color[gray]{0.95},
+   frame              = single,
+   framexleftmargin   = 5pt,
+   rulesep            = 5pt,
+   framexrightmargin  = 5pt,
+   framexbottommargin = 5pt,
+   framextopmargin    = 5pt,
+   xleftmargin        = 5pt,
+   xrightmargin       = 5pt,
+   framerule          = 0pt,
+   tabsize            = 2,
+   breaklines         = true,
+   captionpos         = b,
+   commentstyle       = \color{phpcomment},
+   keywordstyle       = \color{phpkeyword},
+   stringstyle        = \color{phpstring},
+   showspaces         = false,
+   showstringspaces   = false,
+   literate           =
+      {<?php}{{\textcolor{red}{<?php}}}{5}
+      {?>}{{\textcolor{red}{?>}}}{2}
+}
+
+\endinput
+
+%%% Local Variables:
+%%% mode: latex
+%%% End:
