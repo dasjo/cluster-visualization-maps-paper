@@ -3,14 +3,10 @@
 % state - vis
 %
 
-\chapter{State of the Art}
+\chapter{Results}
 \label{state-vis}
 
-N\"{o}llenburg~\cite{noellenburg11geovis} names three ``Driving forces in geovisualization'': The advent of high speed parallel processing and technology advances in computer graphics, today allows us to grasp enormous amounts of information. Besides the advances in graphics and display technologies, the second main driving force in geographic visualization is the increasing amount of geospatial data being collected and available. Finally, the third force is the \textit{rise of the Internet}, which significantly pushes web mapping and contributes to geovisualization technologies.
-
-As a logical consequence of broader audiences having access to geospatial visualizations using the Internet, it appears that there is a shift from technology-driven visualization towards more human-centered approaches. Interactive and highly dynamic interfaces have helped the map evolve from its traditional role as a presentational device towards exploring geospatial data~\cite{noellenburg11geovis, vislecture}.
-
-In chapter \ref{chapter:foundations-vis}, foundations of visualization, visual variables and data exploration techniques, as well as the concept of clutter reduction have been introduced. In the following, existing visualization techniques for representing clustered data on maps will be discussed. In a first step, visualization concepts on the map level will be investigated. Later, approaches for visualizing individual clusters are added. 
+In the previous chapter, foundations of visualization, visual variables and data exploration techniques, as well as the concept of clutter reduction have been introduced. As the main part of the presented study, existing visualization techniques for representing clustered data on maps will be discussed. In a first step, visualization concepts on the map level will be investigated. Later, approaches for visualizing individual clusters are added. An evaluation summarizes the discussed technologies.
 
 \section{Map visualization types for clustering}
 \label{chapter:map-vis}
@@ -176,7 +172,7 @@ While no real-world examples have been identified during the research, using pix
 
 \item \textit{Line charts} visualize data as lines by connecting data points of the corresponding values. They are used to display trends over time. Figure \ref{fig:dia-map-sparklines} illustrates surface temperature anomalies from NASA's GISS\footnote{NASA Goddard Institude for Space Studies \url{http://www.giss.nasa.gov/}} as a \textit{Sparkline} map~\cite{web:sparkmaps}. The Sparkline is a reduced line chart without axes and coordinates. It presents the general shape of variation in a simple and highly condensed way~\cite{wiki:sparkline}.
 
-\item \textit{Bar charts} express data values by vertical or horizontal bars, in which the length of a bar indicates the data value. Figure \ref{fig:dia-map-barchart} shows an example from UgandaWatch\footnote{UgandaWatch: \url{http://www.ugandawatch.org/}}, which displays economic indicators per region for the country Uganda. In this example, the Drupal mapping stack explained in chapter \ref{chapter:drupal-mapping} is combined with bar chart technologies\footnote{How are you using mapping in Drupal? \url{http://groups.drupal.org/node/174904\#comment-585264}}.
+\item \textit{Bar charts} express data values by vertical or horizontal bars, in which the length of a bar indicates the data value. Figure \ref{fig:dia-map-barchart} shows an example from UgandaWatch\footnote{UgandaWatch: \url{http://www.ugandawatch.org/}}, which displays economic indicators per region for the country Uganda.
 
 \parbox [h]{0.4\textwidth }{
     \includegraphics [width=\linewidth]{figures/dia_map_sparklines.png}
@@ -196,7 +192,7 @@ While no real-world examples have been identified during the research, using pix
 
 Figure \ref{fig:dia-map-piechart} depicts a pie chart map example from the Kartograph\footnote{Kartograph \url{http://kartograph.org/}} framework. It shows unemployment rates in Spain, providing an effective way to display ratios as opposed to a chloropeth map, where the user usually needs to consult a legend to understand the actual data values.
 
-\item \textit{Container shapes} such as \textit{bounding boxes} and \textit{hulls} are an alternative to iconic displays as they can show the area covered by clusters~\cite{Delort10vis}. As seen in figure \ref{fig:leaflet}, the Leaflet.markercluster library visualizes the convex hull of a cluster to indicate the covered area on mouse-hover. Marco Cristani et al~\cite{Cristani08geoimagemaps} use a hull-based technique for visualizing clusters from a geo-located image database on a map. As illustrated in figure \ref{fig:dia-map-hull}, each cluster is represented by a hull that marks the boundaries of the area and contains a representative image of the clustered set of images.
+\item \textit{Container shapes} such as \textit{bounding boxes} and \textit{hulls} are an alternative to iconic displays as they can show the area covered by clusters~\cite{Delort10vis}. The Leaflet.markercluster library visualizes the convex hull of a cluster to indicate the covered area on mouse-hover. Marco Cristani et al~\cite{Cristani08geoimagemaps} use a hull-based technique for visualizing clusters from a geo-located image database on a map. As illustrated in figure \ref{fig:dia-map-hull}, each cluster is represented by a hull that marks the boundaries of the area and contains a representative image of the clustered set of images.
 
 
 \parbox [h]{0.4\textwidth }{
@@ -224,7 +220,10 @@ This concludes the investigative enumeration of cluster visualization techniques
 
 An interesting publication by Andrienko et al~\cite{andrienko2012sca} presents a complex system for place-oriented analysis of movement data. This goes beyond the use case of simply visualizing clustered data on a slippy map, but it is a good show case for how effective the presentation of spatio-temporal data using a combination of techniques can be. \textit{Time graphs}, \textit{mosaic diagrams}, \textit{space-time cubes} and \textit{table lens displays} are used to create a powerful tool for inspecting movement data on maps.
 
+
+
 \section{Evaluation of visualization techniques for clusters on a map}
+\label{chapter:eval-vis}
 
 This chapter summarizes the main visualization examples presented in the previous chapters. An evaluation of techniques for visualizing clusters on maps is created by proposing a set of key characteristics that are considered to be significant for this kind of visualization.
 
@@ -274,7 +273,8 @@ An explanation of each criterion follows:
 
 The results of the evaluation of visualization techniques for clusters on a map based on the stated criteria are illustrated in figure \ref{fig:vis-eval}. Note that the classifications for each technique being evaluated primarily represent the according examples shown in the previous chapters. Where it seemed obvious, the optional possibility of fulfilling a criterion has been marked as such. As an extreme example, the geographic map as its general concept has been marked with the optional possibility of fulfilling each criterion. It is up the the actual implementation to satisfy them individually. While the Leaflet.markercluster example provides a visual indicator for the number of items within clusters, the wind history example doesn't.
 
-Some classifications contain a number referring to additional notes as presented in the following: (1) The Leaflet.markercluster example shows cluster on demand, based on user interaction. By mouse-hovering over an item, it will display the convex hull of the items being clustered, see figure \ref{fig:leaflet}. (2) In the case of the binned heat map example and the Voronoi map, cluster areas are approximated by the tessellation which is part of the clustering algorithm, see figure \ref{fig:map-type-binning} and \ref{fig:map-type-voronoi}. (3) The dot-grid map doesn't provide a mean of showing cluster areas by themselves, but the density of items still supports the notion of recognizing cluster areas, see figure{fig:map-type-dotgrid}. (4) For various visualization techniques, the amount of items within a cluster could be visualized by simply scaling the visual entity. (5) The hull example uses an area shape defined by the data, similarly to the choropleth map. Without a distortion technique, the shape therefore can't be used to indicate the number of items within a cluster. Still, a non-shape visual aspect like color could be used as an indicator. (6) In the case of pixel-oriented techniques and the provided chart examples, the color attribute will likely be used for showing extra cluster info instead of indicating the number of items within a cluster. Modifying the shape size can be used as an alternative in this cases. (7) The choroleth and voronoi map examples would rely on representing extra information within the defined area and therefore rely on the.variation of visual variables related to color and texture. (8) The same restrictions as in the previous note apply, but for even smaller areas.
+Some classifications contain a number referring to additional notes as presented in the following: (1) The Leaflet.markercluster example shows cluster on demand, based on user interaction. By mouse-hovering over an item, it will display the convex hull of the items being clustered. (2) In the case of the binned heat map example and the Voronoi map, cluster areas are approximated by the tessellation which is part of the clustering algorithm, see figure \ref{fig:map-type-binning} and \ref{fig:map-type-voronoi}. (3) The dot-grid map doesn't provide a mean of showing cluster areas by themselves, but the density of items still supports the notion of recognizing cluster areas, see figure{fig:map-type-dotgrid}. (4) For various visualization techniques, the amount of items within a cluster could be visualized by simply scaling the visual entity. (5) The hull example uses an area shape defined by the data, similarly to the choropleth map. Without a distortion technique, the shape therefore can't be used to indicate the number of items within a cluster. Still, a non-shape visual aspect like color could be used as an indicator. (6) In the case of pixel-oriented techniques and the provided chart examples, the color attribute will likely be used for showing extra cluster info instead of indicating the number of items within a cluster. Modifying the shape size can be used as an alternative in this cases. (7) The choroleth and voronoi map examples would rely on representing extra information within the defined area and therefore rely on the.variation of visual variables related to color and texture. (8) The same restrictions as in the previous note apply, but for even smaller areas.
 
-Driving forces in visual mapping, map visualization types and cluster visualization techniques for maps have been introduces and summarized within the given evaluation. This concludes the chapter on state of the art. 
+Map visualization types and cluster visualization techniques for maps have been introduced and were summarized within the given evaluation.
+
 

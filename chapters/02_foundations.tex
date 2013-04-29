@@ -40,10 +40,25 @@ Cognitive aspects of visualization help us understand, how visual thinking works
 
 Various scientific publications~\cite{phillips82clutter, MACEACHREN90apattern, keim2001vis, harvey2008primer, ellis08clutter, Delort10vis, noellenburg11geovis} that have been researched for this thesis mention the importance of using abstraction for efficiently visualizing information. Especially maps can only highlight interesting information by filtering out unnecessary details of the environment. For example, a road map is better visualized on a clear background instead of satellite images that would distract the user from the primary goal of finding directions. The challenge is to balance realism and abstraction in geovisualization depending on the problem~\cite{noellenburg11geovis}.
 
-\newpage
+
+
+N\"{o}llenburg~\cite{noellenburg11geovis} names three ``Driving forces in geovisualization'': The advent of high speed parallel processing and technology advances in computer graphics, today allows us to grasp enormous amounts of information. Besides the advances in graphics and display technologies, the second main driving force in geographic visualization is the increasing amount of geospatial data being collected and available. Finally, the third force is the \textit{rise of the Internet}, which significantly pushes web mapping and contributes to geovisualization technologies.
+
+As a logical consequence of broader audiences having access to geospatial visualizations using the Internet, it appears that there is a shift from technology-driven visualization towards more human-centered approaches. Interactive and highly dynamic interfaces have helped the map evolve from its traditional role as a presentational device towards exploring geospatial data~\cite{noellenburg11geovis, vislecture}.
+
+
 \section{Visual variables}
 \label{chapter:vis-variables}
 
+
+Information on a map is represented by symbols, point, lines or areas with properties such as color and shape. Bertin~\cite{bertin67graphics, bertin83graphics} has described the fundamental graphic variables for map and graphic design. While being written for hand-drawn maps on paper, the concepts described by Bertin are still applied in todays digital mapping applications and have been further developed by MacEachren~\cite{MacEachren95maps}.
+
+The main variables, introduced by Bertin are: \textit{location}, \textit{size}, \textit{value}, \textit{texture}, \textit{color}, \textit{orientation} and \textit{shape}. MacEachren adds \textit{crispness}, \textit{resolution}, \textit{transparency} and \textit{arrangement} to the list and splits up color into its values of \textit{brightness}, \textit{saturation} and \textit{hue}. Figure \ref{fig:aesthetic-attributes} describes a similar list of aesthetic attributes by different geometries and groups the variables regarding \textit{form}, \textit{color}, \textit{texture} and \textit{optics}~\cite{Wilkinson05grammar}.
+
+Each variable has a different potential for visualizing data of categorical information (nominal and ordinal) or numerical information (including intervals and ratios). For example, the size of a point can be used to describe a numeric ratio and different shapes may be used to distinguish items based on categories. On the other hand, different texture patterns only offer a limited set of possibilities and size shouldn't be used for describing nominal properties~\cite{noellenburg11geovis, MacEachren95maps}.
+
+
+ 
 \begin{figure}[h]
   \begin{center}
     \includegraphics[width=0.8\textwidth]{figures/aesthetic_attributes.pdf}
@@ -52,11 +67,6 @@ Various scientific publications~\cite{phillips82clutter, MACEACHREN90apattern, k
   \end{center}
 \end{figure}
 
-Information on a map is represented by symbols, point, lines or areas with properties such as color and shape. Bertin~\cite{bertin67graphics, bertin83graphics} has described the fundamental graphic variables for map and graphic design. While being written for hand-drawn maps on paper, the concepts described by Bertin are still applied in todays digital mapping applications and have been further developed by MacEachren~\cite{MacEachren95maps}.
-
-The main variables, introduced by Bertin are: \textit{location}, \textit{size}, \textit{value}, \textit{texture}, \textit{color}, \textit{orientation} and \textit{shape}. MacEachren adds \textit{crispness}, \textit{resolution}, \textit{transparency} and \textit{arrangement} to the list and splits up color into its values of \textit{brightness}, \textit{saturation} and \textit{hue}. Figure \ref{fig:aesthetic-attributes} describes a similar list of aesthetic attributes by different geometries and groups the variables regarding \textit{form}, \textit{color}, \textit{texture} and \textit{optics}~\cite{Wilkinson05grammar}.
-
-Each variable has a different potential for visualizing data of categorical information (nominal and ordinal) or numerical information (including intervals and ratios). For example, the size of a point can be used to describe a numeric ratio and different shapes may be used to distinguish items based on categories. On the other hand, different texture patterns only offer a limited set of possibilities and size shouldn't be used for describing nominal properties~\cite{noellenburg11geovis, MacEachren95maps}. 
 
 \section{Visual data exploration techniques}
 \label{vis-data-techniques}

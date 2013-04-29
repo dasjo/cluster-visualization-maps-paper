@@ -5,6 +5,50 @@
 
 \chapter{Introduction}
 
+Digital mapping applications on the Internet are strongly emerging. Big players like Google Maps\footnote{\url{https://maps.google.at}} and OpenStreetMap\footnote{\url{http://www.openstreetmap.org/ }} provide online maps, that users can view and interact with. Maps allow telling stories and communicating data in a visual way. They can be used to get a quick overview of points-of-interest in a certain area. If a large amount of information is contained in such an area, visual clutter is causing problems. Obviously, when telling a story, information needs to be told in a compact way as the human brain can only process a limited amount of data at the same time~\cite{noellenburg11geovis, Delort10vis}.
+
+Clustering\footnote{\url{http://en.wikipedia.org/wiki/Cluster_analysis}} is a technique for grouping objects with similarities that can be used to reduce visual clutter as described before. Clustering points on a map enhances performance and readability of data-heavy map applications. Client-side clustering uses JavaScript to group overlapping items. Server-side clustering is needed when too many items slow down processing and create network bottle necks. This paper aims at discussing visual aspects of Geocluster, a server-side clustering implementation for maps. It considers well-separated, spatial clusters based on Euclidean distance.
+
+The primary goal is to evaluate cluster visualization techniques for creating interactive maps based on large data sets. Visual ways for presenting clustered data on maps should be researched and summarized. Combining existing concepts from visual cluster analysis and geovisualization should provide a better understanding of theoretic backgrounds and put into context. The idea is to draw practical conclusions from the overlap of these two complex areas of research. Given the lack of existing publication on visualizing clusters on maps for reference, the study rather aim at exploration of concepts and ideas than being a complete reference. 
+
+
+\section{Structure}
+
+The given introduction is expanded by a discussion of \textit{related work} in the field of geovisualization and visual cluster analysis. In addition, the \textit{methods} being used to achieve the goal evaluating cluster visualization techniques for interactive maps.
+
+Chapter \ref{chapter:foundations} describes the theoretic \textit{foundations} being researched. Basic concepts of geovisualization as visual variables, visual data exploration techniques and clutter reduction are explained.
+
+Chapter \ref{chapter:results} discusses the main \textit{results} of the study. Map visualization types, as well as cluster visualization techniques are explained and summarized within an exploratory evaluation.
+
+Chapter \ref{chapter:discussion} is a \textit{discussion} of the previously presented results and applies the evaluation of cluster visualization techniques for maps to the practical use case of Geocluster.
+
+Chapter \ref{chapter:conclusion} finalizes the paper by drawing \textit{conclusions} of the presented results and discussion.
+
+
+\section{Related work}
+
+While many publications have been found on either cluster analysis or geovisualization, few of them touch upon both subjects at the same time. There hasn't been found any study that compares the different techniques for visualizing clusters on maps as its primary goal.
+
+A primary resource instead are publications on individual approaches for cluster geovisualization: 
+Heat maps \cite{geotree, hotmap}, Voronoi Diagrams \cite{Delort10vis, voromap}, Convex Hulls \cite{Cristani08geoimagemaps}. A well research blog article talks about different ways to visualize clusters on maps~\cite{web:clustering-google}. A more complex visualization is provided by Bristle Maps \cite{bristle}. Various cluster visualization techniques on maps are combined in \cite{andrienko2012sca}. Self-organizing maps represent clustered information in virtual space \cite{som}.
+
+On a practical note, Leaflet.markercluster\footnote{\url{https://github.com/Leaflet/Leaflet.markercluster}}, the OpenLayers Cluster Strategy\footnote{\url{http://openlayers.org/dev/examples/strategy-cluster.html}} and MarkerClusterer for Google Maps\footnote{\url{http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/docs/reference.html}} are common implementations for client-side clustering that visualize clusters on maps.
+
+For classification of the researched techniques, 3 taxonomies have been considered. ``Visual variables'' by Jacques Bertin \cite{bertin67graphics, bertin83graphics} with some adjustments by Alan M. MacEachren \cite{MacEachren95maps} and Leland Wilkinson \cite{Wilkinson05grammar}. ``Classification of visual data exploration techniques'' by Daniel A. Keim~\cite{keim2001vis} and the ``Clutter Reduction Taxonomy'' by Geoffrey Ellis and Alan Dix~\cite{ellis08clutter}. Further, related taxonomies are found \cite{lohse, shneiderman}.
+ 
+In addition, publications on cluster and multi-variate data visualization techniques \cite{ward02glyphs, zhang07thesis, ElmqvistDGHF08, hiervis}, geovisualization \cite{noellenburg11geovis, maceachren-geovis, MacEachren07cartovis} and diagrams \cite{ladenhauf12dia} are extensive resources for the individual topics being discussed in this paper.
+
+
+
+\section{Method}
+
+Scientific publications as well as real-world implementations have been researched in order to get a good overview of existing technologies related to visualizing clusters on maps. Given the lack of comparative publications in that particular field, papers on the individual topics of visualization, geovisualization and cluster analysis have been compared for overlapping concepts. As no fixed criteria, despite the general context and goals of the paper have been set, the research was mainly conducted in an explorative way. The criteria of published classifications and taxonomies have been reviewed to match the use case for visualizing clusters on web maps.
+
+Based on an overview of foundations in geovisualization and cluster analysis, the main part of the study tries to enumerate the diverse approaches for visualizing clusters on maps. This is done from two perspectives: \textit{map visualization types} cover the whole visualization and \textit{cluster visualization techniques} focus on individual clusters being represented on maps. Finally, an attempt for classification has been made as part of evaluation based on exploratory analysis: custom criteria derived from existing taxonomies are defined and the researched technologies get classified amongst those criteria.
+
+
+
+
 
 
 
