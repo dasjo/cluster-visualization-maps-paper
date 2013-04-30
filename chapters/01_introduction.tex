@@ -7,22 +7,20 @@
 
 Digital mapping applications on the Internet are strongly emerging. Big players like Google Maps\footnote{\url{https://maps.google.at}} and OpenStreetMap\footnote{\url{http://www.openstreetmap.org/ }} provide online maps, that users can view and interact with. Maps allow telling stories and communicating data in a visual way. They can be used to get a quick overview of points-of-interest in a certain area. If a large amount of information is contained in such an area, visual clutter is causing problems. Obviously, when telling a story, information needs to be told in a compact way as the human brain can only process a limited amount of data at the same time~\cite{noellenburg11geovis, Delort10vis}.
 
-Clustering\footnote{\url{http://en.wikipedia.org/wiki/Cluster_analysis}} is a technique for grouping objects with similarities that can be used to reduce visual clutter as described before. Clustering points on a map enhances performance and readability of data-heavy map applications. Client-side clustering uses JavaScript to group overlapping items. Server-side clustering is needed when too many items slow down processing and create network bottle necks. This paper aims at discussing visual aspects of Geocluster, a server-side clustering implementation for maps. It considers well-separated, spatial clusters based on Euclidean distance.
+Clustering\footnote{\url{http://en.wikipedia.org/wiki/Cluster_analysis}} is a technique for grouping objects with similarities that can be used to reduce visual clutter. Clustering points on a map enhances performance and readability of data-heavy map applications. Client-side clustering uses JavaScript to group overlapping items. Server-side clustering is needed when too many items slow down processing and create network bottle necks. This paper aims at discussing visual aspects of Geocluster \cite{geocluster-thesis}, a server-side clustering implementation for maps. It considers well-separated, spatial clusters based on Euclidean distance.
 
-The primary goal is to evaluate cluster visualization techniques for creating interactive maps based on large data sets. Visual ways for presenting clustered data on maps should be researched and summarized. Combining existing concepts from visual cluster analysis and geovisualization should provide a better understanding of theoretic backgrounds and put into context. The idea is to draw practical conclusions from the overlap of these two complex areas of research. Given the lack of existing publication on visualizing clusters on maps for reference, the study rather aim at exploration of concepts and ideas than being a complete reference. 
+The primary goal is to \textit{evaluate cluster visualization techniques for creating interactive maps based on large data sets}. Visual ways for presenting clustered data on maps should be researched and summarized. Combining existing concepts from visual cluster analysis and geovisualization should provide a better understanding of theoretic backgrounds and put into context. The idea is to draw practical conclusions from the overlap of these two complex areas of research. Given the lack of existing publication on visualizing clusters on maps for reference, the study primarily aims at exploration of concepts and ideas instead of being a complete reference. 
 
 
 \section{Structure}
 
 The given introduction is expanded by a discussion of \textit{related work} in the field of geovisualization and visual cluster analysis. In addition, the \textit{methods} being used to achieve the goal evaluating cluster visualization techniques for interactive maps.
 
-Chapter \ref{chapter:foundations} describes the theoretic \textit{foundations} being researched. Basic concepts of geovisualization as visual variables, visual data exploration techniques and clutter reduction are explained.
+Chapter \ref{chapter:foundations-vis} describes the theoretic \textit{foundations} being researched. Basic concepts of geovisualization as visual variables, visual data exploration techniques and clutter reduction are explained.
 
-Chapter \ref{chapter:results} discusses the main \textit{results} of the study. Map visualization types, as well as cluster visualization techniques are explained and summarized within an exploratory evaluation.
+Chapter \ref{state-vis} discusses the main \textit{results} of the study. Map visualization types, as well as cluster visualization techniques are explained and summarized within an exploratory evaluation.
 
-Chapter \ref{chapter:discussion} is a \textit{discussion} of the previously presented results and applies the evaluation of cluster visualization techniques for maps to the practical use case of Geocluster.
-
-Chapter \ref{chapter:conclusion} finalizes the paper by drawing \textit{conclusions} of the presented results and discussion.
+Chapter \ref{chapter:discussion} is a \textit{discussion} of the previously presented results and applies the evaluation of cluster visualization techniques for maps to the practical use case of Geocluster. Finally, conclusions of the presented results and discussions are made.
 
 
 \section{Related work}

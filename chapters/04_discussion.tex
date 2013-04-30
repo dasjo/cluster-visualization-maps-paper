@@ -1,6 +1,7 @@
 
 
 \chapter{Discussion}
+\label{chapter:discussion}
 
 The previously presented evaluation classifies 7 different map visualizations that contain clusters (5 map types and 2 examples), as well as 9 cluster visualization techniques (2 glyphs, 3 pixel-based and 4 geometric / diagrams). Each visualization has been evaluated against a limited set criteria which are considered as important for showing clustered, multi-variate data on maps.
 
@@ -14,14 +15,15 @@ While most cluster visualization techniques fail at indicating areas, they are p
 Given the general discussion of the study results, a practical evaluation of the Geocluster concludes the discussion.
 
 \section{Geocluster visualization}
+\label{chapter:geocluster-vis}
 
-Geocluster\footnote{\url{http://drupal.org/project/geocluster}} is a server-side clustering implementation for mapping with Drupal based on Geohash. Two visualizations have been implemented:
+Geocluster\footnote{\url{http://drupal.org/project/geocluster}} is a server-side clustering implementation for mapping with Drupal based on Geohash. Refer to the complete thesis on Geocluster for an explanation of related concepts as Drupal, the Drupal mapping stack, Bounding Box strategies etc. \cite{geocluster-thesis}. Two visualizations for Geocluster have been implemented:
 
 \begin{itemize}
 
 \item \textbf{Geocluster default visualization}
 
-A simple Geocluster visualization component has been built to support the display of clustered markers on interactive maps based on the output of the server-side clustering implementation. It extends the Bounding Box strategy of the Leaflet GeoJSON module in oder to create numbered markers that visualize the cluster sizes. Clicking on a clustered marker will zoom into the map in order to explore the data on a more granular level. Figure \ref{fig:map-clustered} demonstrates an example screenshot of the Geocluster visualization. Compare this with an unclustered map, containing the same amount of items in figure \ref{fig:map-unclustered}
+A simple Geocluster visualization component has been built to support the display of clustered markers on interactive maps based on the output of the server-side clustering implementation. It extends the Bounding Box strategy of the Leaflet GeoJSON module in oder to create numbered markers that visualize the cluster sizes. Clicking on a clustered marker will zoom into the map in order to explore the data on a more granular level. Figure \ref{fig:map-clustered} demonstrates an example screenshot of the Geocluster visualization. Compare this with an unclustered map, containing the same amount of items in figure \ref{fig:map-unclustered}.
 
 
 \hspace*{-1.5cm}\parbox [h]{0.5\textwidth}{
@@ -38,12 +40,10 @@ A simple Geocluster visualization component has been built to support the displa
 }
 
 
-The Bounding Box related logic for Leaflet originally has been developed as a part of the Geocluster module. During the development process, this part of Geocluster was generalized and published as the independent Leaflet GeoJSON module\footnote{\url{http://drupal.org/project/leaflet_geojson}}. The visualization component of Geocluster therefore integrates with Leaflet GeoJSON and extends the JavaScript implementation of the Bounding Box strategy to integrate custom markers and cluster interaction. The cluster visualization is based on a code snippet for numbered markers on github\footnote{\url{https://gist.github.com/comp615/2288108}}.
+The visualization component of Geocluster is based on a GeoJSON-feed provided by the server-side clustering implementation. It uses the JavaScript Bounding Box strategy to dynamically update results for the current viewport after zooming or panning the map. The cluster visualization is very simple and based on a code snippet for numbered markers on github\footnote{\url{https://gist.github.com/comp615/2288108}}.
 
 
 \item \textbf{GeoRecruiter}
-
-A practical use case for server-side geo clustering has been implemented for the Recruiter job board solution. It supports spatial search capabilities of the Recruiter distribution by visualizing a large amount of job offers on e-recruitment websites. The prototype being discussed in the following chapter has been developed based on a copy of the Drupaljobs website\footnote{\url{http://drupaljobs.epiqo.com}}.
 
 \begin{figure}[h]
   \begin{center}
@@ -53,11 +53,17 @@ A practical use case for server-side geo clustering has been implemented for the
   \end{center}
 \end{figure}
 
+A practical use case for server-side geo clustering has been implemented for the Recruiter job board solution. It supports spatial search capabilities of the Recruiter distribution by visualizing a large amount of job offers on e-recruitment websites. The prototype being discussed has been developed based on a copy of the Drupaljobs website\footnote{\url{http://drupaljobs.epiqo.com}}.
+
 \begin{quote}
 \textit{Recruiter} is a Drupal distribution for building Drupal based e-recruitment platforms. Users can register either as recruiter and post job classifieds or they can register as applicants and fill out their resume. A faceted search helps users to find jobs and possible job candidates.\footnote{\url{http://drupal.org/project/recruiter}}. \textit{Drupaljobs} is provided as a show case for the Recruiter distribution. Its base features allow to create and search for job offers by companies as well as resumes of registered applicants on the e-recruitment platform.
 \end{quote}
 
+
 A map visualizes the clustered job search results. In order to enhance the representation of clusters and to experiment with interaction, the CSS styles of client-side clustering library Leaflet.markercluster have been adapted and extended with additional colors for large clusters. A visualization of a map within the Drupaljobs test installation is provided in figure \ref{fig:drupaljobs-geocluster-solr}.
+
+
+
 
 \end{itemize}
 
@@ -99,7 +105,23 @@ Next, the evaluation of visualization techniques for clusters on map presented i
 
 \textbf{Cluster sizes}: Both visualizations show the number of items within a cluster, but only the GeoRecruiter example uses color and none of them encodes the size of a cluster into the shape size. As naturally, a cluster with more items can be visualized larger than smaller clusters, the algorithm could be improved for growing clusters by their size. The bigger size of a cluster would therefore reduce the distance to its neighbor clusters, potentially merging additional neighbors into it. Andrew Betts describes a similar approach under the term \textit{``Grid based viral growth argorithm''}~\cite{web:clustering-google}.
 
-For low zoom levels, the roundtrip to the server for fetching a separate clustered result on every bounding box change can be an overhead. Christopher Calid\footnote{\url{http://drupal.org/user/210499}} proposes a way of ``Progressively enhance server-side with client-side clustering''\footnote{\url{http://drupal.org/node/1914704}}. The intention is to transition from server-side clustering higher zoom levels to client-side clustering for lower zoom levels.
+\textbf{Cluster areas}: Neither implementation provides a visual indicator for showing cluster areas. Again, the server-side clustering implementation would need to provide this information. Instead, for performance reason only the number of items within clusters is provided as aggregate values.
+
+\textbf{Extra cluster info}: Similarly, no additional data about aggregates within clusters is exposed by the clustering implementation. This might suffice the use case of clustering points on maps for reducing clutter, but potentially hides a lot of information that could be displayed as part of the cluster visualization. 
+
+On a note on performance of the interaction, for low zoom levels, the roundtrip to the server for fetching a separate clustered result on every bounding box change can be an overhead. Christopher Calid proposes a way of ``Progressively enhance server-side with client-side clustering''\footnote{\url{http://drupal.org/node/1914704}}. The intention is to switch from server-side clustering at higher zoom levels to client-side clustering for lower zoom levels.
+
+
+
+\section{Conclusions}
+
+A simple taxonomy for classification of cluster visualization techniques for maps has been presented and applied to a selection of techniques and examples. For the particular use case of web maps, visualizing \textit{cluster sizes} was proposed as a primary goal for displaying clusters, followed by \textit{showing the cluster area} and \textit{showing extra cluster info}. The techniques have been enumerated and evaluated from two different view points: \textit{map visualization types for clusters}. In this way, a structured overview of existing approaches could be given.
+
+The discussion of the practical implementation of Geocluster visualization for server-side clustering with maps illustrates some a major difference between the visualization of the same dataset. Indicating cluster sizes by visual means like shape size and color seems to generate a more intuitive result than simply putting numbers of cluster sizes within markers. In comparison to advanced cluster visualization techniques, the Geocluster visualization is a very simple one that doesn't show cluster areas and extra cluster infos.
+
+A brief overview has been given by enumerating examples from different research disciplines like geovisualization, cluster visualization and chart techniques. Complex cluster visualizations seem to specific to scientific purposes of exploration and alysis of rather private audiences. Simpler cluster visualizations can be found in JavaScript mapping libraries that are used to present information to public audiences.
+
+The study only touches on further aspects like interaction, usability and animation. Also the impact of visual variables and the exact data types being presented offers room for additional investigation. 
 
 
 
