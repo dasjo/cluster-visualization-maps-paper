@@ -12,7 +12,7 @@ On the contrary, few visualization techniques fulfill the criterion of \textbf{s
 While most cluster visualization techniques fail at indicating areas, they are perfectly suited for \textbf{showing extra cluster info}. Glyphs, geometric-techniques and diagrams appear suitable for visualizing cluster info of lower complexity while pixel-based techniques are geared towards multi-variate data of higher complexity.
 
 
-Given the general discussion of the study results, a practical evaluation of the Geocluster concludes the discussion.
+Given the general discussion of the study results, a practical evaluation of Geocluster is added to the discussion.
 
 \section{Geocluster visualization}
 \label{chapter:geocluster-vis}
@@ -53,14 +53,14 @@ The visualization component of Geocluster is based on a GeoJSON-feed provided by
   \end{center}
 \end{figure}
 
-A practical use case for server-side geo clustering has been implemented for the Recruiter job board solution. It supports spatial search capabilities of the Recruiter distribution by visualizing a large amount of job offers on e-recruitment websites. The prototype being discussed has been developed based on a copy of the Drupaljobs website\footnote{\url{http://drupaljobs.epiqo.com}}.
+A practical use case for server-side geo clustering has been implemented for the Recruiter job board solution. It supports spatial search capabilities of the Recruiter distribution by visualizing a large amount of job offers on e-recruitment websites. The prototype being discussed has been developed, based on a copy of the Drupaljobs website\footnote{\url{http://drupaljobs.epiqo.com}}.
 
 \begin{quote}
 \textit{Recruiter} is a Drupal distribution for building Drupal based e-recruitment platforms. Users can register either as recruiter and post job classifieds or they can register as applicants and fill out their resume. A faceted search helps users to find jobs and possible job candidates.\footnote{\url{http://drupal.org/project/recruiter}}. \textit{Drupaljobs} is provided as a show case for the Recruiter distribution. Its base features allow to create and search for job offers by companies as well as resumes of registered applicants on the e-recruitment platform.
 \end{quote}
 
 
-A map visualizes the clustered job search results. In order to enhance the representation of clusters and to experiment with interaction, the CSS styles of client-side clustering library Leaflet.markercluster have been adapted and extended with additional colors for large clusters. A visualization of a map within the Drupaljobs test installation is provided in figure \ref{fig:drupaljobs-geocluster-solr}.
+A map visualizes the clustered job search results. In order to enhance the representation of clusters and to experiment with interaction, the CSS styles of the client-side clustering library Leaflet.markercluster have been adapted and extended with additional colors for large clusters. A visualization of a map within the Drupaljobs test installation is provided in figure \ref{fig:drupaljobs-geocluster-solr}.
 
 
 
@@ -81,9 +81,9 @@ Both implementations fulfill most of the clutter reduction criteria from chapter
 
 \item The Leaflet Bounding Box strategy implementation allows to \textit{localize} the view by panning and zooming and therefore reduce the display to a specific region.
 
-\item \textit{Scalability} is provided by the underlying clustering algorithm, as evaluated in the previous section.
+\item \textit{Scalability} is provided by the underlying clustering algorithm, as evaluated in the publication on Geocluster \cite{geocluster-thesis}.
 
-\item The configuration options of Geocluster allow to \textit{adjust} the minimum distance between clusters. Additional configuration options are provided by the Views integration of the Geocluster module. Still, the configuration options could be expanded for example to control visual parameters of clusters. 
+\item The configuration options of Geocluster allow to \textit{adjust} the minimum distance between clusters. Additional configuration options are provided by the Views integration of the Geocluster module. Still, the configuration options could be expanded for example to control visual parameters of clusters \cite{geocluster-thesis}.
 
 \item The criterion of \textit{showing point/line attributes} is fulfilled only in a very limited way. Both implementations are currently restricted to displaying the number of items within a cluster as the only aggregate value. In order to support complex visualization techniques for multivariate data as discussed in chapter \ref{chapter:cluster-vis}, the clustering implementation needs to provide the required, aggregate values of the underlying data.
 
@@ -105,7 +105,7 @@ Next, the evaluation of visualization techniques for clusters on map presented i
 
 \textbf{Cluster sizes}: Both visualizations show the number of items within a cluster, but only the GeoRecruiter example uses color and none of them encodes the size of a cluster into the shape size. As naturally, a cluster with more items can be visualized larger than smaller clusters, the algorithm could be improved for growing clusters by their size. The bigger size of a cluster would therefore reduce the distance to its neighbor clusters, potentially merging additional neighbors into it. Andrew Betts describes a similar approach under the term \textit{``Grid based viral growth argorithm''}~\cite{web:clustering-google}.
 
-\textbf{Cluster areas}: Neither implementation provides a visual indicator for showing cluster areas. Again, the server-side clustering implementation would need to provide this information. Instead, for performance reason only the number of items within clusters is provided as aggregate values.
+\textbf{Cluster areas}: Neither implementation provides a visual indicator for showing cluster areas. Again, the server-side clustering implementation would need to provide this information. Instead, for performance reasons, only the number of items within clusters is provided as an aggregate value.
 
 \textbf{Extra cluster info}: Similarly, no additional data about aggregates within clusters is exposed by the clustering implementation. This might suffice the use case of clustering points on maps for reducing clutter, but potentially hides a lot of information that could be displayed as part of the cluster visualization. 
 
@@ -115,13 +115,13 @@ On a note on performance of the interaction, for low zoom levels, the roundtrip 
 
 \section{Conclusions}
 
-A simple taxonomy for classification of cluster visualization techniques for maps has been presented and applied to a selection of techniques and examples. For the particular use case of web maps, visualizing \textit{cluster sizes} was proposed as a primary goal for displaying clusters, followed by \textit{showing the cluster area} and \textit{showing extra cluster info}. The techniques have been enumerated and evaluated from two different view points: \textit{map visualization types for clusters}. In this way, a structured overview of existing approaches could be given.
+A simple taxonomy for classification of cluster visualization techniques for maps has been presented and applied to a selection of techniques and examples. For the particular use case of web maps, visualizing \textit{cluster sizes} was proposed as a primary goal for displaying clusters, followed by \textit{showing the cluster area} and \textit{showing extra cluster info}. The techniques have been enumerated and evaluated from two different view points: \textit{map visualization types for clusters} and \textit{cluster visualization techniques for maps}. In this way, a structured overview of existing approaches could be given.
 
-The discussion of the practical implementation of Geocluster visualization for server-side clustering with maps illustrates some a major difference between the visualization of the same dataset. Indicating cluster sizes by visual means like shape size and color seems to generate a more intuitive result than simply putting numbers of cluster sizes within markers. In comparison to advanced cluster visualization techniques, the Geocluster visualization is a very simple one that doesn't show cluster areas and extra cluster infos.
+The discussion of the practical implementation of Geocluster visualization for server-side clustering with maps illustrates how the same dataset can be visualized in different ways. Indicating cluster sizes by visual means like shape size and color seems to generate a more intuitive result than simply putting numbers of cluster sizes within markers. In comparison to advanced cluster visualization techniques, the Geocluster visualization is a very simple one that doesn't show cluster areas and extra cluster infos.
 
-A brief overview has been given by enumerating examples from different research disciplines like geovisualization, cluster visualization and chart techniques. Complex cluster visualizations seem to specific to scientific purposes of exploration and alysis of rather private audiences. Simpler cluster visualizations can be found in JavaScript mapping libraries that are used to present information to public audiences.
+A brief overview has been given by enumerating examples from different research disciplines like geovisualization, cluster visualization and chart techniques. Complex cluster visualizations seem to be specific for scientific purposes of exploration and alysis of rather private audiences. Simpler cluster visualizations can be found in JavaScript mapping libraries that are used to present information to public audiences.
 
-The study only touches on further aspects like interaction, usability and animation. Also the impact of visual variables and the exact data types being presented offers room for additional investigation. 
+The study only touches briefly on further aspects like interaction, usability and animation. Also the impact of visual variables and the exact data types being presented offers room for additional investigation. 
 
 
 
